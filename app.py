@@ -8,22 +8,9 @@ import cv2 as cv
 import numpy as np
 # Khởi tạo Flask Server Backend
 app = Flask(__name__)
-app.config['FLASKS3_BUCKET_NAME'] = 'pioneerstorage'
-s3 = FlaskS3(app)
+
 # Apply Flask CORS
 CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
-app.config['UPLOAD_FOLDER'] = ''
-app.config['S3_BUCKET'] = "pioneerstorage"
-app.config['S3_KEY'] = "AKIA54U57CQ6AKHP2AX6"
-app.config['S3_SECRET'] = "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"
-app.config['S3_LOCATION'] = 'http://{}.s3.amazonaws.com/'.format("pioneerstorage")
-
-s3 = boto3.client(
-   "s3",
-   aws_access_key_id=app.config['S3_KEY'],
-   aws_secret_access_key=app.config['S3_SECRET']
-)
 
 @app.route('/', methods=['POST', 'GET'])
 @cross_origin(origin='*')
